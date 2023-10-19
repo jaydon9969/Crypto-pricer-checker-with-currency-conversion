@@ -1,1 +1,3 @@
-console.log("Nothing to see here");
+function add(a,b){
+  return a+b
+}
