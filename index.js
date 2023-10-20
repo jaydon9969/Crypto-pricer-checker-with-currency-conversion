@@ -1,3 +1,0 @@
-function userlogin(){
-    //added code
-}
