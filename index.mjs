@@ -36,16 +36,6 @@ let pricesLunoBTCUSD2 = priceLunoBTCBMYR/convertUsdToMyr;
 console.log("BTCUSD price on Luno: ",pricesLunoBTCUSD2)
 
 
-//Retrieve the BTCUSD price on Luno
-// async function livePricesLunoUsd(){
-//   const response = await fetch("https://api.luno.com/api/1/ticker?pair=XBTUSDC");
-//   const data = await response.json();
-//   return data.last_trade;
-// }
-
-// const pricesLunoBTCUSD = await livePricesLunoUsd()
-// console.log("BTCUSD price on Luno: USD",pricesLunoBTCUSD)
-
 //Retrieve the BTCBUSD price on Binance
 import Binance from "node-binance-api";
 const binance = new Binance();
@@ -66,13 +56,22 @@ const priceDifference = differenceCalculator();
 console.log("Price difference: ", priceDifference);
 
 //Calculate percentage difference between Luno and Binance
-function calcPercentage(x, y, fixed = 2) {
+function calcPercentage(x, y) {
   const percent = (x / y) * 100;
+  return percent
+}
 
-  if(!isNaN(percent)){
-    return Number(percent.toFixed(fixed));
-  }else{
-  return null;
-}}
 
-console.log("Luno premium: ",100 - calcPercentage(priceBinanceBTCBUSD, pricesLunoBTCUSD2),"%");
+console.log("Luno premium: ",(100 - calcPercentage(priceBinanceBTCBUSD, pricesLunoBTCUSD2)).toFixed(4),"%");
+
+
+
+//Retrieve the BTCUSD price on Luno
+// async function livePricesLunoUsd(){
+//   const response = await fetch("https://api.luno.com/api/1/ticker?pair=XBTUSDC");
+//   const data = await response.json();
+//   return data.last_trade;
+// }
+
+// const pricesLunoBTCUSD = await livePricesLunoUsd()
+// console.log("BTCUSD price on Luno: USD",pricesLunoBTCUSD)
